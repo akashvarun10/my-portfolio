@@ -1,6 +1,5 @@
 import { useState, FormEvent } from 'react';
 import { TextField, Button, CircularProgress, FormControl, InputLabel, MenuItem, Select, Typography, Paper, Chip } from '@mui/material';
-
 const AddProject = () => {
   const [password, setPassword] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -113,150 +112,151 @@ const AddProject = () => {
     'xcode.png'
   ];
 
-  const handleSubmitPassword = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    // Check if the password matches the expected value
-    if (password === 'your_password_here') {
-      setIsAuthenticated(true);
-    } else {
-      setError('Incorrect password. Please try again.');
-    }
-  };
+const handleSubmitPassword = (event: FormEvent<HTMLFormElement>) => {
+  event.preventDefault();
+  const envPassword = import.meta.env.VITE_REACT_APP_PASSWORD;
 
-  const handleSubmitProject = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const project = { title, description, category, github, demo, images: selectedImages };
-
-    try {
-      setLoading(true);
-      const response = await fetch('http://localhost:3000/projects', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(project),
-      });
-
-      if (response.ok) {
-        console.log('Project added successfully');
-        // Reset form fields
-        setTitle('');
-        setDescription('');
-        setCategory('');
-        setGithub('');
-        setDemo('');
-        setSelectedImages([]);
-      } else {
-        setError('Failed to add project');
-      }
-    } catch (err) {
-      console.error('Error:', err);
-      setError('Failed to add project');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  if (!isAuthenticated) {
-    return (
-      <Paper elevation={3} style={{ padding: '20px', maxWidth: '400px', margin: '0 auto', marginTop: '20px' }}>
-        <form onSubmit={handleSubmitPassword}>
-          <TextField
-            label="Password"
-            type="password"
-            fullWidth
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <Button type="submit" variant="contained">Submit</Button>
-          {error && <Typography color="error">{error}</Typography>}
-        </form>
-      </Paper>
-    );
+  // Check if the password matches the expected value
+  if (password === envPassword) {
+    setIsAuthenticated(true);
+  } else {
+    setError('Incorrect password. Please try again.');
   }
+};
+const handleSubmitProject = async (event: FormEvent<HTMLFormElement>) => {
+  event.preventDefault();
 
+  const project = { title, description, category, github, demo, images: selectedImages };
+
+  try {
+    setLoading(true);
+    const response = await fetch('http://localhost:3000/projects', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(project),
+    });
+
+    if (response.ok) {
+      console.log('Project added successfully');
+      // Reset form fields
+      setTitle('');
+      setDescription('');
+      setCategory('');
+      setGithub('');
+      setDemo('');
+      setSelectedImages([]);
+    } else {
+      setError('Failed to add project');
+    }
+  } catch (err) {
+    console.error('Error:', err);
+    setError('Failed to add project');
+  } finally {
+    setLoading(false);
+  }
+};
+
+if (!isAuthenticated) {
   return (
     <Paper elevation={3} style={{ padding: '20px', maxWidth: '400px', margin: '0 auto', marginTop: '20px' }}>
-      <form onSubmit={handleSubmitProject}>
+      <form onSubmit={handleSubmitPassword}>
         <TextField
-          label="Title"
+          label="Password"
+          type="password"
           fullWidth
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
-        <TextField
-          label="Description"
-          multiline
-          rows={4}
-          fullWidth
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <FormControl fullWidth>
-          <InputLabel id="category-label">Category</InputLabel>
-          <Select
-            labelId="category-label"
-            id="category"
-            value={category}
-            onChange={(e) => setCategory(e.target.value as string)}
-          >
-            <MenuItem value="Data Science">Data Science</MenuItem>
-            <MenuItem value="Machine Learning/AI">Machine Learning/AI</MenuItem>
-            <MenuItem value="Web Development">Web Development</MenuItem>
-            <MenuItem value="Cloud & DevOps">Cloud & DevOps</MenuItem>
-            <MenuItem value="Freelance">Freelance</MenuItem>
-          </Select>
-        </FormControl>
-        <TextField
-          label="GitHub"
-          fullWidth
-          value={github}
-          onChange={(e) => setGithub(e.target.value)}
-        />
-        <TextField
-          label="Demo"
-          fullWidth
-          value={demo}
-          onChange={(e) => setDemo(e.target.value)}
-        />
-        <FormControl fullWidth>
-          <InputLabel id="image-label">Images</InputLabel>
-          <Select
-            labelId="image-label"
-            id="image"
-            multiple
-            value={selectedImages}
-            onChange={(e) => setSelectedImages(e.target.value as string[])}
-          >
-            {images.map((img) => (
-              <MenuItem key={img} value={img}>
-                <img src={`src/images/${img}`} alt={img} width={20} height={20} />
-                &nbsp;{img}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-        {selectedImages.map((img, index) => (
-          <Chip key={index} label={
-            <span>
-              <img src={`/src/images/${img}`} alt={img} width={20} height={20} />
-              &nbsp;{img}
-            </span>
-          } />
-        ))}
-        <Button
-          type="submit"
-          variant="contained"
-          disabled={loading}
-          startIcon={loading ? <CircularProgress size={20} /> : null}
-        >
-          {loading ? 'Adding Project...' : 'Add Project'}
-        </Button>
+        <Button type="submit" variant="contained">Submit</Button>
         {error && <Typography color="error">{error}</Typography>}
       </form>
     </Paper>
   );
+}
+
+return (
+  <Paper elevation={3} style={{ padding: '20px', maxWidth: '400px', margin: '0 auto', marginTop: '20px' }}>
+    <form onSubmit={handleSubmitProject}>
+      <TextField
+        label="Title"
+        fullWidth
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
+      <TextField
+        label="Description"
+        multiline
+        rows={4}
+        fullWidth
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+      />
+      <FormControl fullWidth>
+        <InputLabel id="category-label">Category</InputLabel>
+        <Select
+          labelId="category-label"
+          id="category"
+          value={category}
+          onChange={(e) => setCategory(e.target.value as string)}
+        >
+          <MenuItem value="Data Science">Data Science</MenuItem>
+          <MenuItem value="Machine Learning/AI">Machine Learning/AI</MenuItem>
+          <MenuItem value="Web Development">Web Development</MenuItem>
+          <MenuItem value="Cloud & DevOps">Cloud & DevOps</MenuItem>
+          <MenuItem value="Freelance">Freelance</MenuItem>
+        </Select>
+      </FormControl>
+      <TextField
+        label="GitHub"
+        fullWidth
+        value={github}
+        onChange={(e) => setGithub(e.target.value)}
+      />
+      <TextField
+        label="Demo"
+        fullWidth
+        value={demo}
+        onChange={(e) => setDemo(e.target.value)}
+      />
+      <FormControl fullWidth>
+        <InputLabel id="image-label">Images</InputLabel>
+        <Select
+          labelId="image-label"
+          id="image"
+          multiple
+          value={selectedImages}
+          onChange={(e) => setSelectedImages(e.target.value as string[])}
+        >
+          {images.map((img) => (
+            <MenuItem key={img} value={img}>
+              <img src={`src/images/${img}`} alt={img} width={20} height={20} />
+              &nbsp;{img}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+      {selectedImages.map((img, index) => (
+        <Chip key={index} label={
+          <span>
+            <img src={`/src/images/${img}`} alt={img} width={20} height={20} />
+            &nbsp;{img}
+          </span>
+        } />
+      ))}
+      <Button
+        type="submit"
+        variant="contained"
+        disabled={loading}
+        startIcon={loading ? <CircularProgress size={20} /> : null}
+      >
+        {loading ? 'Adding Project...' : 'Add Project'}
+      </Button>
+      {error && <Typography color="error">{error}</Typography>}
+    </form>
+  </Paper>
+);
 };
 
 export default AddProject;
