@@ -83,8 +83,8 @@ const AdditionalText = styled(Typography)(({ theme }) => ({
 
 const PictureContainer = styled(Box)(({ theme }) => ({
   flexShrink: 0,
-  width: '250px',
-  height: '250px',
+  width: '300px',
+  height: '300px',
   marginRight: theme.spacing(2),
   overflow: 'hidden',
   borderRadius: '50%',
