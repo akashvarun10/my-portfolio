@@ -130,7 +130,7 @@ const handleSubmitProject = async (event: FormEvent<HTMLFormElement>) => {
 
   try {
     setLoading(true);
-    const response = await fetch('http://localhost:3000/projects', {
+    const response = await fetch(import.meta.env.VITE_API_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
