@@ -1,10 +1,14 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Container, Grid, Typography, TextField, Button, Paper, Box } from '@mui/material';
 import { HiOutlineMail, HiOutlineArrowSmRight } from 'react-icons/hi';
 import emailjs from 'emailjs-com';
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
 const Contact: React.FC = () => {
   const form = useRef<HTMLFormElement>(null);
+  const [showAlert, setShowAlert] = useState(false);
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -14,6 +18,7 @@ const Contact: React.FC = () => {
       .then(
         (result) => {
           console.log(result.text);
+          setShowAlert(true);
         },
         (error) => {
           console.log(error.text);
@@ -111,8 +116,8 @@ const Contact: React.FC = () => {
                     '& .MuiInputLabel-outlined.Mui-focused': {
                       color: '#76885B',
                     },
-                  }}               
-                  />
+                  }}
+                />
                 <TextField
                   label="Message"
                   name="message"
@@ -131,7 +136,7 @@ const Contact: React.FC = () => {
                       color: '#76885B',
                     },
                   }}
-                  />
+                />
                 <Button
                   type="submit"
                   variant="contained"
@@ -169,6 +174,16 @@ const Contact: React.FC = () => {
                   Send Message
                 </Button>
               </form>
+              {showAlert && (
+                <Stack sx={{ width: '100%', mt: 2 }} spacing={2}>
+                  <Alert
+                    icon={<CheckCircleOutlineIcon fontSize="inherit" />}
+                    severity="success"
+                  >
+                    Email sent successfully!
+                  </Alert>
+                </Stack>
+              )}
             </Paper>
           </Grid>
         </Grid>
