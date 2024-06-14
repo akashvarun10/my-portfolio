@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { Grid, Typography, Button, Modal, IconButton } from '@mui/material';
+import { Grid, Typography, Button, Modal, IconButton, useTheme } from '@mui/material';
 import { HiOutlineClipboardList, HiOutlineArrowSmRight, HiOutlineCheckCircle, HiX } from 'react-icons/hi';
 
 const Services = () => {
   const [toggleState, setToggleState] = useState(0);
+  const theme = useTheme();
 
   const toggleTab = (index: number) => {
     setToggleState(index);
@@ -107,10 +108,11 @@ const Services = () => {
                     border: '1px solid #ddd',
                     boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
                     position: 'relative',
-                    backgroundColor: 'var(--container-color)', // Use the container color variable
+                    backgroundColor: theme.palette.mode === 'dark' ? '#000' : '#fff',
+                    color: theme.palette.mode === 'dark' ? '#fff' : '#000',
                   }}>
                     <IconButton onClick={() => toggleTab(0)} style={{ position: 'absolute', top: '1.5rem', right: '1.5rem' }}>
-                      <HiX style={{ fontSize: '1.5rem', color: 'var(--title-color)' }} />
+                      <HiX style={{ fontSize: '1.5rem', color: theme.palette.mode === 'dark' ? '#fff' : '#000' }} />
                     </IconButton>
                     <Typography variant="h4" align="center">{service.title}</Typography>
                     <Typography variant="body2" align="center" style={{ marginBottom: '16px' }}>
@@ -120,7 +122,7 @@ const Services = () => {
                       {service.points.map((point, index) => (
                         <Grid key={index} item>
                           <Grid container alignItems="center" spacing={1}>
-                            <HiOutlineCheckCircle style={{ fontSize: '1rem', color: 'var(--title-color)' }} />
+                            <HiOutlineCheckCircle style={{ fontSize: '1rem', color: theme.palette.mode === 'dark' ? '#fff' : '#000' }} />
                             <Typography variant="body2">{point}</Typography>
                           </Grid>
                         </Grid>
@@ -138,5 +140,3 @@ const Services = () => {
 };
 
 export default Services;
-
-
