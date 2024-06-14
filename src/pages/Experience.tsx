@@ -31,38 +31,34 @@ interface Leadership {
 
 const ExperienceContainer = styled('section')`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   padding: 2rem;
   background-color: ${({ theme }) => theme.palette.background.default};
 
-  @media (max-width: 768px) {
-    flex-direction: column;
+  @media (min-width: 1400px) {
+    flex-wrap: nowrap;
   }
 `;
 
 const ExperienceCard = styled('div')`
+  flex: 1 1 100%;
   padding: 1.5rem;
-  margin-top: -2px;
-  border-left: 2px solid ${({ theme }) => theme.palette.primary.main};
+  margin: 20px;
+  border-left: 2px solid #76885B;
   position: relative;
   background-color: ${({ theme }) => theme.palette.background.default};
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   width: 400px;
-  height: 350px;
+  height: 370px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1400px) {
     width: 100%;
     height: auto;
-  }
-`;
-
-const Column = styled('div')`
-  flex: 1;
-  margin: 0 1rem;
-
-  @media (max-width: 768px) {
-    margin-bottom: 20px;
   }
 `;
 
@@ -93,7 +89,7 @@ const Experience: React.FC = () => {
       institution: 'Northeastern University, Boston, MA',
       duration: 'Expected 2025',
       description: [
-        'Relevant Coursework: Data Science Engineering Methods and Toolbox, Advances in Data Science/Architecture, Web Design and User Experience, Application Engineering Development.',
+        'Relevant Coursework: Data Science Engineering Methods and Toolbox, Advances in Data Science/Architecture, 	Parallel Machine Learning & AI, Neural Modeling Methods & Tool,Web Design and User Experience, Application Engineering Development.',
       ],
       logo: 'neu',
     },
@@ -147,8 +143,8 @@ const Experience: React.FC = () => {
       organization: 'Student Copter Research Organization',
       duration: 'Sep 2020 - Jun 2021',
       description: [
-        'Worked on research in the NLP field & Drone-based Computer Vision applications.',
-        'Developed Face Recognition for the entire team & Object detection for drones.',
+        'Initially as part of a Research-based development team in the Computer Vision field later worked on research in the NLP field & Drone-based Computer Vision applications.',
+        'Developed Face Recognition for the entire team & Object detection for drones and also Worked on several projects, was part of various webinars held by the club.',
       ],
       logo: 'scro',
     },
@@ -187,13 +183,13 @@ const Experience: React.FC = () => {
           Resume
         </Typography>
         <ExperienceContainer id="resume">
-          <Column>
+          <div style={{ flex: '1 1 100%' }}>
             <Typography variant="h4" align="center" sx={{ fontSize: '20px', fontWeight: 600, textTransform: 'uppercase', marginBottom: '1.5rem' }}>
               <HiAcademicCap />
               Education
             </Typography>
             {educations.map(education => (
-              <div key={education.title} style={{ margin: '20px' }}>
+              <div key={education.title}>
                 {renderCard(
                   education.title,
                   education.institution,
@@ -203,15 +199,15 @@ const Experience: React.FC = () => {
                 )}
               </div>
             ))}
-          </Column>
+          </div>
 
-          <Column>
+          <div style={{ flex: '1 1 100%' }}>
             <Typography variant="h4" align="center" sx={{ fontSize: '20px', fontWeight: 600, textTransform: 'uppercase', marginBottom: '1.5rem' }}>
               <HiOutlineBriefcase />
               Experience
             </Typography>
             {experiences.map(experience => (
-              <div key={experience.title} style={{ margin: '20px' }}>
+              <div key={experience.title}>
                 {renderCard(
                   experience.title,
                   experience.company,
@@ -221,15 +217,15 @@ const Experience: React.FC = () => {
                 )}
               </div>
             ))}
-          </Column>
+          </div>
 
-          <Column>
+          <div style={{ flex: '1 1 100%' }}>
             <Typography variant="h2" align="center" sx={{ fontSize: '20px', fontWeight: 600, textTransform: 'uppercase', marginBottom: '1.5rem' }}>
               <HiOutlineUsers />
               Leadership & Volunteer
             </Typography>
             {leaderships.map(leadership => (
-              <div key={leadership.title} style={{ margin: '20px' }}>
+              <div key={leadership.title}>
                 {renderCard(
                   leadership.title,
                   leadership.organization,
@@ -239,7 +235,7 @@ const Experience: React.FC = () => {
                 )}
               </div>
             ))}
-          </Column>
+          </div>
         </ExperienceContainer>
       </section>
     </ThemeProvider>
