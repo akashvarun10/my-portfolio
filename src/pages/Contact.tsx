@@ -5,6 +5,7 @@ import emailjs from 'emailjs-com';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const Contact: React.FC = () => {
   const form = useRef<HTMLFormElement>(null);
@@ -37,39 +38,63 @@ const Contact: React.FC = () => {
           Contact Me
         </Typography>
         <Grid container spacing={6} justifyContent="center">
-          <Grid item xs={12} md={4}>
-            <Paper
-              elevation={3}
-              sx={{
-                p: 3,
-                textAlign: 'center',
-                borderRadius: '0.75rem',
-              }}
-            >
-              <HiOutlineMail size="2rem" color="#333" />
-              <Typography variant="h6" sx={{ mt: 1.5 }}>
-                Email
-              </Typography>
-              <Typography variant="body2" sx={{ mb: 1 }}>
-                pemmaraju.v@northeastern.edu
-              </Typography>
-              <Button
-                variant="outlined"
-                startIcon={<HiOutlineArrowSmRight />}
-                href="mailto:pemmaraju.v@northeastern.edu"
+          <Grid item xs={12} md={6} container spacing={6} justifyContent="center">
+            <Grid item xs={12} sm={8}>
+              <Paper
+                elevation={3}
                 sx={{
-                  borderColor: '#76885B',
-                  color: '#76885B',
-                  '&:hover': {
-                    borderColor: '#76885B',
-                    backgroundColor: '#76885B',
-                    color: '#fff',
-                  },
+                  p: 3,
+                  textAlign: 'center',
+                  borderRadius: '0.75rem',
+                  maxWidth: '400px',
+                  margin: '0 auto',
                 }}
               >
-                Write Me
-              </Button>
-            </Paper>
+                <HiOutlineMail size="2rem" color="#333" />
+                <Typography variant="h6" sx={{ mt: 1.5 }}>
+                  Email
+                </Typography>
+                <Typography variant="body2" sx={{ mb: 1 }}>
+                  pemmaraju.v@northeastern.edu
+                </Typography>
+                <Button
+                  variant="outlined"
+                  startIcon={<HiOutlineArrowSmRight />}
+                  href="mailto:pemmaraju.v@northeastern.edu"
+                  sx={{
+                    borderColor: '#76885B',
+                    color: '#76885B',
+                    '&:hover': {
+                      borderColor: '#76885B',
+                      backgroundColor: '#76885B',
+                      color: '#fff',
+                    },
+                  }}
+                >
+                  Write Me
+                </Button>
+              </Paper>
+            </Grid>
+            <Grid item xs={12} sm={8}>
+              <Paper
+                elevation={3}
+                sx={{
+                  p: 3,
+                  textAlign: 'center',
+                  borderRadius: '0.75rem',
+                  maxWidth: '400px',
+                  margin: '0 auto',
+                }}
+              >
+                <LocationOnIcon sx={{ fontSize: '2rem', color: '#333' }} />
+                <Typography variant="h6" sx={{ mt: 1.5 }}>
+                  Location
+                </Typography>
+                <Typography variant="body2" sx={{ mb: 1 }}>
+                  Boston, MA
+                </Typography>
+              </Paper>
+            </Grid>
           </Grid>
           <Grid item xs={12} md={6}>
             <Paper
@@ -80,7 +105,7 @@ const Contact: React.FC = () => {
               }}
             >
               <Typography variant="h6" align="center" sx={{ mb: 3 }}>
-                What's the project?
+                Let's get in touch
               </Typography>
               <form ref={form} onSubmit={sendEmail}>
                 <TextField
@@ -165,7 +190,7 @@ const Contact: React.FC = () => {
                         fill="#fff"
                       ></path>
                       <path
-                        d="M10.11 14.7052C9.92005 14.7052 9.73005 14.6352 9.58005 14.4852C9.29005 14.1952 9.29005 13.7152 9.58005 13.4252L13.16 9.83518C13.45 9.54518 13.93 9.54518 14.22 9.83518C14.51 10.1252 14.51 10.6052 14.22 10.8952L10.64 14.4852C10.5 14.6352 10.3 14.7052 10.11 14.7052Z"
+                        d="M10.11 14.7052C9.92005 14.7052 9.73005 14.6352 9.58005 14.4852C9.29005 14.1952 9.29005 13.7152 9.58005 13.4252L13.16 9.83518C13.45 9.54518 13.93 9.54518 14.22 9.83518C14.51 10.1252 14.51 10.6052 14.22 10.8952L10.64 14.4852C10.49 14.6352 10.3 14.7052 10.11 14.7052Z"
                         fill="#fff"
                       ></path>
                     </svg>
@@ -174,19 +199,28 @@ const Contact: React.FC = () => {
                   Send Message
                 </Button>
               </form>
-              {showAlert && (
-                <Stack sx={{ width: '100%', mt: 2 }} spacing={2}>
-                  <Alert
-                    icon={<CheckCircleOutlineIcon fontSize="inherit" />}
-                    severity="success"
-                  >
-                    Email sent successfully!
-                  </Alert>
-                </Stack>
-              )}
             </Paper>
           </Grid>
         </Grid>
+        <Stack sx={{ width: '100%' }} spacing={2}>
+          {showAlert && (
+            <Alert
+              icon={<CheckCircleOutlineIcon fontSize="inherit" />}
+              severity="success"
+              onClose={() => {
+                setShowAlert(false);
+              }}
+              sx={{
+                mt: 3,
+                // backgroundColor: '#4caf50',
+                // color: '#fff',
+                borderRadius: '0.75rem',
+              }}
+            >
+              Your message has been sent successfully!
+            </Alert>
+          )}
+        </Stack>
       </Container>
     </Box>
   );
