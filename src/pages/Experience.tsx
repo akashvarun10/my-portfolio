@@ -153,7 +153,7 @@ const Experience: React.FC = () => {
   const renderCard = (title: string, company: string, duration: string, description: string[], logo: string) => (
     <ExperienceCard>
       <Typography variant="h4" align="left" sx={{ fontSize: '14px', fontWeight: 600, textTransform: 'uppercase', marginBottom: '10px', display: 'flex', alignItems: 'center' }}>
-        <Logo src={`src/assets/seals/${logo}.png`} alt={title} />
+        <Logo src={`public/${logo}.png`} alt={title} />
         <span style={{ fontWeight: 'bold', marginLeft: '10px' }}>{title}</span>
       </Typography>
       <Typography variant="h5" align="left" sx={{ fontSize: '14px', backgroundColor: 'rgba(118, 136, 91, 0.5)', padding: '5px 15px', display: 'inline-block', fontWeight: 600, marginBottom: '10px' }}>

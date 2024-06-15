@@ -234,7 +234,7 @@ const Project: React.FC = () => {
                       {project.images.map((image, imgIndex) => (
                         <img
                           key={imgIndex}
-                          src={`/src/assets/${image}`}
+                          src={`public/${image}`}
                           alt={image}
                           style={{ height: '30px', margin: '5px' }}
                         />

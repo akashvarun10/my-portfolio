@@ -484,7 +484,7 @@ const Skills: React.FC = () => {
             <SkillList>
               {skills.map((skill: Skill) => (
                 <SkillItem key={skill.name} data-name={skill.name}>
-                  <SkillItemImg src={`src/assets/${skill.logo}`} alt={skill.name} />
+                  <SkillItemImg src={`public/${skill.logo}`} alt={skill.name} />
                 </SkillItem>
               ))}
             </SkillList>

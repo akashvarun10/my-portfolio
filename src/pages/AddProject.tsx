@@ -249,7 +249,7 @@ const AddProject = () => {
           >
             {images.map((img) => (
               <MenuItem key={img} value={img}>
-                <img src={`src/assets/${img}`} alt={img} width={20} height={20} />
+                <img src={`public/${img}`} alt={img} width={20} height={20} />
                 &nbsp;{img}
               </MenuItem>
             ))}
@@ -258,7 +258,7 @@ const AddProject = () => {
         {selectedImages.map((img, index) => (
           <Chip key={index} label={
             <span>
-              <img src={`/src/assets/${img}`} alt={img} width={20} height={20} />
+              <img src={`public/${img}`} alt={img} width={20} height={20} />
               &nbsp;{img}
             </span>
           } />
