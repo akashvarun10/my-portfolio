@@ -152,7 +152,7 @@ const Hero = () => {
           <SocialLinks />
         </TextContainer>
         <PictureContainer>
-          <Picture src="/src/images/my-picture.JPG" alt="My Picture" />
+          <Picture src="../images/my-picture.JPG" alt="My Picture" />
         </PictureContainer>
       </HeroContainer>
     </>
