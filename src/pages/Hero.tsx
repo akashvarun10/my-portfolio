@@ -4,6 +4,7 @@ import SocialLinks from '../components/SocialLinks';
 import { Box, Typography, styled, CssBaseline } from '@mui/material';
 import Typed from 'typed.js';
 import { createGlobalStyle } from 'styled-components';
+import akash from '/src/images/Intro/akash.jpg';
 
 // Global styles to ensure the body and html occupy the full height
 const GlobalStyle = createGlobalStyle`
@@ -152,7 +153,7 @@ const Hero = () => {
           <SocialLinks />
         </TextContainer>
         <PictureContainer>
-          <Picture src="/src/images/my-picture.JPG" alt="My Picture" />
+          <Picture src={akash} alt="My Picture" />
         </PictureContainer>
       </HeroContainer>
     </>

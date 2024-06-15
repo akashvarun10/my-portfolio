@@ -1,6 +1,8 @@
 import { Box, Typography, styled } from '@mui/material';
 import Navbar from '../components/Navbar';
 import akashvarun from '../images/Intro/akashvarun.jpg';
+import hpair from '/src/images/Intro/hpair.png';
+import neu from '/src/images/Intro/northeastern.png';
 
 const AboutContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -109,13 +111,13 @@ const About = () => {
           <Box>
             <Box display="flex" justifyContent="center">
               <Box display="flex" flexDirection="row" alignItems="center">
-                <Badge src="/src/images/intro/northeastern.png" alt="Northeastern University" />
+                <Badge src={neu} alt="Northeastern University" />
                 <Typography variant="body1" paragraph>
                   Master's degree, Information Systems at Northeastern University, Boston MA
                 </Typography>
               </Box>
               <Box display="flex" flexDirection="row" alignItems="center" ml={2}>
-                <Badge src="/src/images/intro/hpair.png" alt="Harvard Project for Asian and International Relations (HPAIR)'22 Delegate" />
+                <Badge src={hpair} alt="Harvard Project for Asian and International Relations (HPAIR)'22 Delegate" />
                 <Typography variant="body1" paragraph>
                   Harvard Project for Asian and International Relations (HPAIR)'22 Delegate
                 </Typography>
