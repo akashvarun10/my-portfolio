@@ -4,7 +4,7 @@ import SocialLinks from '../components/SocialLinks';
 import { Box, Typography, styled, CssBaseline } from '@mui/material';
 import Typed from 'typed.js';
 import { createGlobalStyle } from 'styled-components';
-import akash from '/src/images/Intro/akash.jpg';
+import akash from '/src/assets/Intro/akash.jpg';
 
 // Global styles to ensure the body and html occupy the full height
 const GlobalStyle = createGlobalStyle`

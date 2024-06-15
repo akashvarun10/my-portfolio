@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { AppBar, Toolbar, Button, Stack, Box, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ThemeToggleButton from './ThemeToggleButton';
-import brandImage from '../images/Intro/brand.png';
+import brandImage from '../assets/Intro/brand.png';
 
 const Navbar: React.FC = () => {
   const [showNav, setShowNav] = useState(false);

@@ -1,8 +1,8 @@
 import { Box, Typography, styled } from '@mui/material';
 import Navbar from '../components/Navbar';
-import akashvarun from '../images/Intro/akashvarun.jpg';
-import hpair from '/src/images/Intro/hpair.png';
-import neu from '/src/images/Intro/northeastern.png';
+import akashvarun from '../assets/Intro/akashvarun.jpg';
+import hpair from '/src/assets/Intro/hpair.png';
+import neu from '/src/assets/Intro/northeastern.png';
 
 const AboutContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
