@@ -15,7 +15,7 @@ const Contact: React.FC = () => {
     e.preventDefault();
 
     emailjs
-      .sendForm('service_05khnsx', 'template_5zig02v', e.currentTarget, 'dzabdbeW9GeOgv3Wk')
+      .sendForm(import.meta.env.VITE_EMAIL_SERVICE_ID, import.meta.env.VITE_EMAIL_TEMPLATE_ID, e.currentTarget, import.meta.env.VITE_EMAIL_PUBLIC_KEY)
       .then(
         (result) => {
           console.log(result.text);
