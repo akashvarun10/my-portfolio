@@ -70,7 +70,7 @@ const Services = () => {
   return (
     <section id="services" style={{ margin: '0 20%' }}>
       <Typography variant="h3" align="center" gutterBottom color='#76885B'>Services</Typography>
-      <Typography variant="subtitle2" align="center" gutterBottom color='#76885B'>Create + Collaborate</Typography>
+      <Typography variant="subtitle2" align="center" gutterBottom color='#76885B'>My Tech Roles & Interests</Typography>
 
       <Grid container spacing={2} justifyContent="center">
         {services.map((service, index) => (

@@ -58,9 +58,13 @@ const TextContainer = styled(Box)(({ theme }) => ({
 
 const SectionTitle = styled(Typography)(({ theme }) => ({
   fontSize: '2rem',
-  fontWeight: 'bold',
   color: '#76885B',
   marginBottom: theme.spacing(2),
+  variant: 'h3',
+  fontWeight: '500',
+  fontFamily: '"Roboto","Helvetica","Arial",sans-serif'
+
+
 }));
 
 const BoldText = styled(Typography)(() => ({

@@ -22,7 +22,7 @@ const MainPage = () => {
         <Contact  />
         <Footer />
       </Box>
-    </>
+      </>
   );
 }
 

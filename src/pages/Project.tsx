@@ -138,11 +138,11 @@ const Project: React.FC = () => {
     <>
       <Navbar />
       <ProjectContainer id="projects">
-        <Typography variant="h4" align="center" gutterBottom>
+        <Typography variant="h3" align="center" gutterBottom color={'#76885B'}>
           Projects
         </Typography>
-        <Typography variant="subtitle2" align="center" gutterBottom>
-          Create + Collaborate
+        <Typography variant="subtitle2" align="center" gutterBottom color={'#76885B'}>
+          Academic & Personal Projects
         </Typography>
 
         <Autocomplete
