@@ -353,6 +353,16 @@ const Experience: React.FC = () => {
 
   const experiences: Experience[] = [
     {
+      title: 'Machine Learning & Data Science Intern',
+      company: 'Aditya University',
+      duration: 'Dec 2022 - Aug 2023',
+      description: [
+        'Developed and implemented an AI proctoring system, increasing exam security and integrity by 30%, and created a face recognition-based attendance system, boosting accuracy by 25%. along with text summarization using NLP techniques and RAG-Implementation with LLM.',
+        'Utilized Advanced ML frameworks like VGG16, ResNet, and BERT with TensorFlow PyTorch & Langchain, and maintained Node.js APIs, Dockerizing apps for seamless deployment.',
+      ],
+      logo: 'au',
+    },
+    {
       title: 'Product Development Intern',
       company: 'Airdonex, Chennai, India',
       duration: 'Jun 2021 - Nov 2021',
@@ -361,16 +371,6 @@ const Experience: React.FC = () => {
         'Developed and implemented scalable machine learning model deployment, leveraging AWS for cloud-based solutions and integrating key Machine Learning APIs, significantly enhancing product features.',
       ],
       logo: 'airdonex',
-    },
-    {
-      title: 'Data Science Intern',
-      company: 'MedTourEasy, Delhi, India',
-      duration: 'Jan 2021 - Feb 2021',
-      description: [
-        'Achieved breakthroughs in data visualization and exploratory analysis, significantly advancing the understanding of fitness trends and used Scikit-Learn for predictive modeling, leading to enhanced insights into fitness trends.',
-        'Developed and applied a Python-based data analysis and EDA pipeline to enhance data driven decision-making.',
-      ],
-      logo: 'medtoureasy',
     },
   ];
 
@@ -415,7 +415,7 @@ const Experience: React.FC = () => {
         {description.map((desc, index) => (
           <li key={index}>
             <Typography variant="body2" align="left" sx={{ marginBottom: '10px' }}>
-              • {desc}
+              {desc}
             </Typography>
           </li>
         ))}

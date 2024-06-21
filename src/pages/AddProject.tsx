@@ -91,6 +91,7 @@ const AddProject = () => {
     'python.svg',
     'pytorch.png',
     'r-lang.svg',
+    'rabbitmq.png',
     'raspberry_pi.svg',
     'react-native.svg',
     'react.svg',

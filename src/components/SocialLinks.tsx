@@ -73,7 +73,7 @@ const SocialLinks = () => {
       <Tooltip title="Resume">
         <Button
           color="inherit"
-          href="path/to/resume.pdf"
+          href="https://drive.google.com/drive/folders/1CihVOr6dR1Ee4TeKAO_-ADw7F3uP5IWC"
           target="_blank"
           rel="noopener noreferrer"
           sx={iconStyle}
