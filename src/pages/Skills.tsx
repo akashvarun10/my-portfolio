@@ -140,7 +140,7 @@ const skillsData: SkillsData = {
     { name: 'Gitlab', logo: 'gitlab.svg' },
     { name: 'Jenkins', logo: 'Jenkins.png' },
     { name: 'Travis-CI', logo: 'travis-ci.svg' },
-    { name: 'Prometheus', logo: 'prometheus.png' },
+    { name: 'Prometheus', logo: 'prometheus.webp' },
     { name: 'Grafana', logo: 'grafana.png' },
     { name: 'Vercel', logo: 'vercel.jpeg' },
     { name: 'Heroku', logo: 'heroku.svg' },
