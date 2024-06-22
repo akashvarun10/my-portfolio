@@ -1,4 +1,3 @@
-// src/components/Navbar.tsx
 import React, { useState } from 'react';
 import { AppBar, Toolbar, Button, Stack, Box, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -30,14 +29,16 @@ const Navbar: React.FC = () => {
         <Box sx={{ flexShrink: 0, marginRight: { xs: 2, sm: 4 } }}>
           <img src={brandImage} alt="Brand" style={{ height: '40px' }} />
         </Box>
-        <IconButton
-          onClick={toggleNav}
-          color="inherit"
-          aria-label="Toggle navigation"
-          sx={{ display: { xs: 'block', md: 'none' } }}
-        >
-          <MenuIcon />
-        </IconButton>
+        <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center' }}>
+          <IconButton
+            onClick={toggleNav}
+            color="inherit"
+            aria-label="Toggle navigation"
+          >
+            <MenuIcon />
+          </IconButton>
+          <ThemeToggleButton />
+        </Box>
         <Stack
           direction={{ xs: 'column', md: 'row' }}
           spacing={{ xs: 1, md: 2, lg: 3 }}
@@ -54,7 +55,9 @@ const Navbar: React.FC = () => {
               {item}
             </Button>
           ))}
-          <ThemeToggleButton />
+          <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+            <ThemeToggleButton />
+          </Box>
         </Stack>
       </Toolbar>
     </AppBar>
