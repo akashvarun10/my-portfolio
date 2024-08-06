@@ -1,5 +1,5 @@
 import { useState, FormEvent } from 'react';
-import { TextField, Button, CircularProgress, FormControl, InputLabel, MenuItem, Select, Typography, Paper, Chip } from '@mui/material';
+import { TextField, Button, CircularProgress, FormControl, InputLabel, MenuItem, Select, Typography, Paper, Chip, Grid } from '@mui/material';
 
 const AddProject = () => {
   const [password, setPassword] = useState('');
@@ -19,6 +19,7 @@ const AddProject = () => {
     'android-studio.svg',
     'apache.svg',
     'appwrite.png',
+    'airflow.png',
     'AWS Lambda.png',
     'AWS SageMaker.png',
     'AWS.svg',
@@ -105,6 +106,7 @@ const AddProject = () => {
     'rust.png',
     'sass.svg',
     'scikit_learn.png',
+    'shell.svg',
     'shopify.webp',
     'stackoverflow.svg',
     'streamlit.png',
@@ -172,117 +174,147 @@ const AddProject = () => {
 
   if (!isAuthenticated) {
     return (
-      <Paper elevation={3} style={{ padding: '20px', maxWidth: '400px', margin: '0 auto', marginTop: '20px' }}>
-        <form onSubmit={handleSubmitPassword}>
-          <TextField
-            label="Password"
-            type="password"
-            fullWidth
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <Button type="submit" variant="contained">Submit</Button>
-          {error && <Typography color="error">{error}</Typography>}
-        </form>
-      </Paper>
+      <Grid container justifyContent="center" alignItems="center" sx={{ height: '100vh' }}>
+        <Grid item xs={12} sm={6} md={4} lg={3}>
+          <Paper elevation={3} sx={{ padding: '20px' }}>
+            <form onSubmit={handleSubmitPassword}>
+              <TextField
+                label="Password"
+                type="password"
+                fullWidth
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <Button type="submit" variant="contained">Submit</Button>
+              {error && <Typography color="error">{error}</Typography>}
+            </form>
+          </Paper>
+        </Grid>
+      </Grid>
     );
   }
 
   return (
-    <Paper elevation={3} style={{ padding: '20px', maxWidth: '400px', margin: '0 auto', marginTop: '20px' }}>
-      <form onSubmit={handleSubmitProject}>
-        <TextField
-          label="Title"
-          fullWidth
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <TextField
-          label="Description"
-          multiline
-          rows={4}
-          fullWidth
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <FormControl fullWidth>
-          <InputLabel id="category-label">Category</InputLabel>
-          <Select
-            labelId="category-label"
-            id="category"
-            value={category}
-            onChange={(e) => setCategory(e.target.value as string)}
-          >
-            <MenuItem value="Data Science">Data Science</MenuItem>
-            <MenuItem value="Machine Learning/AI">Machine Learning/AI</MenuItem>
-            <MenuItem value="Web Development">Web Development</MenuItem>
-            <MenuItem value="Cloud & DevOps">Cloud & DevOps</MenuItem>
-            <MenuItem value="Freelance">Freelance</MenuItem>
-          </Select>
-        </FormControl>
-        <TextField
-          label="GitHub"
-          fullWidth
-          value={github}
-          onChange={(e) => setGithub(e.target.value)}
-        />
-        <FormControl fullWidth>
-          <InputLabel id="include-demo-label">Include Demo</InputLabel>
-          <Select
-            labelId="include-demo-label"
-            id="include-demo"
-            value={includeDemo ? 'yes' : 'no'}
-            onChange={(e) => setIncludeDemo(e.target.value === 'yes')}
-          >
-            <MenuItem value="yes">Yes</MenuItem>
-            <MenuItem value="no">No</MenuItem>
-          </Select>
-        </FormControl>
-        {includeDemo && (
-          <TextField
-            label="Demo"
-            fullWidth
-            value={demo}
-            onChange={(e) => setDemo(e.target.value)}
-          />
-        )}
-        <FormControl fullWidth>
-          <InputLabel id="image-label">Images</InputLabel>
-          <Select
-            labelId="image-label"
-            id="image"
-            multiple
-            value={selectedImages}
-            onChange={(e) => setSelectedImages(e.target.value as string[])}
-          >
-            {images.map((img) => (
-              <MenuItem key={img} value={img}>
-                <img src={`src/assets/${img}`} alt={img} width={20} height={20} />
-                &nbsp;{img}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-        {selectedImages.map((img, index) => (
-          <Chip key={index} label={
-            <span>
-              <img src={`/src/assets/${img}`} alt={img} width={20} height={20} />
-              &nbsp;{img}
-            </span>
-          } />
-        ))}
-        <Button
-          type="submit"
-          variant="contained"
-          disabled={loading}
-          startIcon={loading ? <CircularProgress size={20} /> : null}
-        >
-          {loading ? 'Adding Project...' : 'Add Project'}
-        </Button>
-        {error && <Typography color="error">{error}</Typography>}
-      </form>
-    </Paper>
+    <Grid container justifyContent="center" alignItems="center" sx={{ height: '100vh' }}>
+      <Grid item xs={12} sm={6} md={4} lg={3}>
+        <Paper elevation={3} sx={{ padding: '20px' }}>
+          <form onSubmit={handleSubmitProject}>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  label="Title"
+                  fullWidth
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  label="Description"
+                  multiline
+                  rows={4}
+                  fullWidth
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <FormControl fullWidth>
+                  <InputLabel id="category-label">Category</InputLabel>
+                  <Select
+                    labelId="category-label"
+                    id="category"
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value as string)}
+                  >
+                    <MenuItem value="Data Science">Data Science</MenuItem>
+                    <MenuItem value="Machine Learning/AI">Machine Learning/AI</MenuItem>
+                    <MenuItem value="Web Development">Web Development</MenuItem>
+                    <MenuItem value="Cloud & DevOps">Cloud & DevOps</MenuItem>
+                    <MenuItem value="Freelance">Freelance</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  label="GitHub"
+                  fullWidth
+                  value={github}
+                  onChange={(e) => setGithub(e.target.value)}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <FormControl fullWidth>
+                  <InputLabel id="include-demo-label">Include Demo</InputLabel>
+                  <Select
+                    labelId="include-demo-label"
+                    id="include-demo"
+                    value={includeDemo ? 'yes' : 'no'}
+                    onChange={(e) => setIncludeDemo(e.target.value === 'yes')}
+                  >
+                    <MenuItem value="yes">Yes</MenuItem>
+                    <MenuItem value="no">No</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              {includeDemo && (
+                <Grid item xs={12}>
+                  <TextField
+                    label="Demo"
+                    fullWidth
+                    value={demo}
+                    onChange={(e) => setDemo(e.target.value)}
+                  />
+                </Grid>
+              )}
+              <Grid item xs={12}>
+                <FormControl fullWidth>
+                  <InputLabel id="image-label">Images</InputLabel>
+                  <Select
+                    labelId="image-label"
+                    id="image"
+                    multiple
+                    value={selectedImages}
+                    onChange={(e) => setSelectedImages(e.target.value as string[])}
+                  >
+                    {images.map((img) => (
+                      <MenuItem key={img} value={img}>
+                        <img src={`src/assets/${img}`} alt={img} width={20} height={20} />
+                        &nbsp;{img}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12}>
+                {selectedImages.map((img, index) => (
+                  <Chip key={index} label={
+                    <span>
+                      <img src={`/src/assets/${img}`} alt={img} width={20} height={20} />
+                      &nbsp;{img}
+                    </span>
+                  } />
+                ))}
+              </Grid>
+              <Grid item xs={12}>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  disabled={loading}
+                  startIcon={loading ? <CircularProgress size={20} /> : null}
+                >
+                  {loading ? 'Adding Project...' : 'Add Project'}
+                </Button>
+                {error && <Typography color="error">{error}</Typography>}
+              </Grid>
+            </Grid>
+          </form>
+        </Paper>
+      </Grid>
+    </Grid>
   );
 };
 
 export default AddProject;
+
+
