@@ -126,7 +126,7 @@ const skillsData: SkillsData = {
     { name: 'Docker', logo: 'docker.png' },
     { name: 'Kubernetes', logo: 'kubernets.svg' },
     { name: 'Terraform', logo: 'terraform.png' },
-    { name: 'AWS', logo: 'aws.svg' },
+    { name: 'AWS', logo: 'AWS.svg' },
     { name: 'Azure', logo: 'azure.png' },
     { name: 'Google Cloud', logo: 'gcp.png' },
     { name: 'Civo Cloud', logo: 'civo.jpg' },
